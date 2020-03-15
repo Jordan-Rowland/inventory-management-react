@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 1rem;
+}
+
+table {
+  min-width: 50%;
+  max-width: 100%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background: hsl(203, 37%, 93%);
+}
+
+th {
+  text-align: center;
+}
+
+.header-row th {
+  height: 2rem;
+  border-bottom: 1px solid black;
+}
+
+.options {
+  column-span: 2;
+}
+
+.item-row td {
+  height: 2rem;
+  padding: 0.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.item-row:nth-child(odd) {
+  background: hsl(173, 6%, 75%);
+}

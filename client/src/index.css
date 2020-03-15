@@ -6,10 +6,14 @@
 }
 
 body {
-  background: hsl(0, 0%, 17%);
+  background: hsl(195, 32%, 90%);
 }
 
-.errors {
+button {
+  padding: 0.2rem;
+}
+
+/* .errors {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -30,4 +34,4 @@ input[type=password] {
   border-radius: 1.5px;
   padding: 0.6rem;
   font-size: 1rem;
-}
+} */
