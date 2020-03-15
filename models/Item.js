@@ -1,4 +1,3 @@
-const validator = require("validator");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -7,7 +6,6 @@ const ItemSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    lowercase: true,
     unique: true
   },
   description: {
@@ -15,7 +13,7 @@ const ItemSchema = new Schema({
     required: true,
   },
   price: {
-    type: Decimal128,
+    type: Number,
     required: true,
   },
   inStock: {

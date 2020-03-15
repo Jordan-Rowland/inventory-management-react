@@ -7,7 +7,7 @@ app.use(express.json());
 connectDB();
 
 // Route imports
-app.use("/api/tasks", require("./routes/api/items"));
+app.use("/api/items", require("./routes/api/items"));
 // app.use("/api/users", require("./routes/api/users"));
 
 // Serve static assets if in production

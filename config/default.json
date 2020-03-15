@@ -1,3 +1,3 @@
 {
-    "mongoURI": "mongodb+srv://jordan:jordan123@inventory-gscye.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://jordan:jordan123@inventory-gscye.mongodb.net/inventory?retryWrites=true&w=majority"
 }

@@ -1,4 +1,11 @@
-export async function postFetchRequest(url, data, token=null) {
+export async function fetchGet(url) {
+  const res = await fetch(url);
+  const response = await res.json();
+  return response
+}
+
+
+export async function fetchPost(url, data) {
   const res = await fetch(
     url, {
     method: "POST",
@@ -6,13 +13,14 @@ export async function postFetchRequest(url, data, token=null) {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
-    body: JSON.stringify({ ...data, token: token }),
+    body: JSON.stringify({ ...data }),
   });
   const response = await res.json();
   return response;
 }
 
-export async function deleteFetchRequest(url, token) {
+
+export async function fetchDelete(url) {
   const res = await fetch(
     url, {
     method: "DELETE",
@@ -20,7 +28,7 @@ export async function deleteFetchRequest(url, token) {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
-    body: JSON.stringify({ token: token }),
+    body: JSON.stringify({  }),
   });
   const response = await res.json();
   return response;

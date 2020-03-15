@@ -1,6 +1,7 @@
 const Item = require("../models/Item");
 require("dotenv").config();
 
+
 exports.getItems = async (req, res) => {
   const items = await Item.find();
   res.json(items);
@@ -40,9 +41,9 @@ exports.editItem = async (req, res) => {
 
 exports.deleteItem = async (req, res) => {
   try {
-    const item = await item.findById(req.params.id)
+    const item = await Item.findById(req.params.id)
     await item.remove()
-    res.json({ success: true })
+    res.json({ success: true, message: "item successfully deleted" })
   } catch(err) {
     console.log(err)
     res.status(404).json({ success: false, error: err })
