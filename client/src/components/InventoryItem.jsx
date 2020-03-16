@@ -9,6 +9,7 @@ function InventoryItem(props) {
     <tr className="item-row">
       <td>{props.name}</td>
       <td>{props.description}</td>
+      <td>{props.category}</td>
       <td>{props.price}</td>
       <td>{props.inStock}</td>
       <td><button>Edit</button></td>

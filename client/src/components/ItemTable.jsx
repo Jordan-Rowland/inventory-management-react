@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ItemTable.css";
 import InventoryItem from "./InventoryItem.jsx";
-import inventory from "../inventory"
+import { fetchGet } from "../helpers"
+// import inventory from "../inventory";
 
 
 function ItemTable() {
+  const [ inventory, setInventory ] = useState([])
+
+  useEffect(() => {
+    async function getItems() {
+      const response = await fetchGet(`/api/items`);
+      setInventory(response);
+    }
+    getItems();
+  });
 
   const rows = inventory.map(item => (
     <InventoryItem
       key={item.id}
       name={item.name}
       description={item.description}
-      price={item.price}
+      price={item.price / 100}
       inStock={item.inStock}
+      category={item.category}
     />
   ))
 
@@ -24,8 +35,9 @@ function ItemTable() {
           <tr className="header-row">
             <th>name</th>
             <th>description</th>
+            <th>category</th>
             <th>price</th>
-            <th>in stock</th>
+            <th>stock</th>
             <th colspan="2">options</th>
           </tr>
         </thead>

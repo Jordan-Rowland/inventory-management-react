@@ -16,9 +16,14 @@ const ItemSchema = new Schema({
     type: Number,
     required: true,
   },
+  category: {
+    type: String,
+    default: "uncategorized",
+    lowercase: true,
+  },
   inStock: {
     type: Number,
-    required: true
+    required: true,
   }
 });
 
