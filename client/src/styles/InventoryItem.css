@@ -1,0 +1,5 @@
+.item-row span {
+  text-decoration: underline;
+  color: hsl(240, 65%, 49%);
+  cursor: pointer;
+}

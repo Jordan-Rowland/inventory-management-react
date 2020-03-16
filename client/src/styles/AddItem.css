@@ -1,0 +1,9 @@
+.add-item-form {
+  display: flex;
+  margin: auto;
+  width: 65%;
+  max-width: 100%;
+  border: 1px solid black;
+  align-items: center;
+  flex-wrap: wrap;
+}

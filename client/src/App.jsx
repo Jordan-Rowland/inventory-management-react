@@ -1,48 +1,47 @@
 import React, { useEffect, useState } from "react";
 // import useStorage from "./hooks/useStorage"
-// import { postFetchRequest } from "./helpers";
+import { fetchPost } from "./helpers";
 import ItemTable from "./components/ItemTable.jsx"
+import AddItem from "./components/AddItem.jsx"
+import { fetchGet } from "./helpers"
 
 
 function App() {
-  // const [ token, setToken ] = useState("");
-  // const [ tokenAcquired, setTokenAcquired ] = useState(null);
-  // const [ tokenStorage, setTokenStorage] = useStorage("token");
 
-  // useEffect(() => {
-  //   async function checkToken() {
-  //     if (tokenStorage().length) {
-  //       console.log("Token in storage");
-  //       const tokenStored = tokenStorage()[0];
-  //       const response = await postFetchRequest("/api/users/verify", {}, tokenStored);
-  //       console.log(response);
-  //       if (response.success) {
-  //         handleLogin(tokenStored);
-  //       }
-  //     } else {
-  //       setTokenAcquired(false);
-  //     }
-  //   }
+  const [ inventory, setInventory ] = useState([])
 
-  //   checkToken();
-  // }, [])
+  useEffect(() => {
+    async function getItems() {
+      const response = await fetchGet("/api/items");
+      setInventory(response);
+    }
+    getItems();
+  });
 
-  // function handleLogin(e) {
-  //   const newToken = e;
-  //   setToken(newToken);
-  //   setTokenStorage(newToken)
-  //   setTokenAcquired(true);
-  // }
+  async function handleAddItemClick(payload) {
+    console.table(payload);
+    const response = await fetchPost("/api/items", payload);
+    if (response.success) {
+      const newInventory = [...inventory, payload];
+      setInventory(newInventory);
+    }
+  };
 
-  // function handleLogout() {
-  //   setToken("");
-  //   localStorage.clear();
-  //   setTokenAcquired(false);
-  // }
+  async function handleRestock(id) {
+    const newInventory = [...inventory];
+    const updatedItemIndex = newInventory.findIndex(item => item._id === id);
+    // Add conditional to make sure stock is less than 25
+    const response = await fetchPost(`/api/items/${id}`, { inStock: 25 });
+    newInventory[updatedItemIndex].inStock = 25;
+    if (response.success) {
+      setInventory(newInventory);
+    }
+  }
 
   return(
     <>
-      <ItemTable />
+      <ItemTable inventory={inventory} onRestock={handleRestock} />
+      <AddItem onClick={handleAddItemClick} />
     </>
   );
 }

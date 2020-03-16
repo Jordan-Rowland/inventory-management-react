@@ -9,29 +9,36 @@ body {
   background: hsl(195, 32%, 90%);
 }
 
-button {
-  padding: 0.2rem;
-}
 
-/* .errors {
+/*
+.errors {
   display: flex;
   justify-content: center;
   text-align: center;
   color: hsl(0, 75%, 65%);
   margin: 1rem;
 }
+*/
 
 input[type=text],
 input[type=email],
 input[type=number],
 input[type=password] {
-  width: 20rem;
-  flex: 1 1 30%;
+  flex: 1 1 2rem;
   height: 30px;
   margin: 10px;
-  margin-bottom: 2rem;
   border: 1px solid #e0e0e0;
   border-radius: 1.5px;
   padding: 0.6rem;
   font-size: 1rem;
-} */
+}
+
+button {
+  padding: 0.2rem;
+  flex: 1 0 2rem;
+  font-size: 0.8rem;
+}
+
+form button {
+  margin: 10px;
+}

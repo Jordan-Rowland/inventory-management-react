@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles/ItemTable.css";
 import InventoryItem from "./InventoryItem.jsx";
-import { fetchGet } from "../helpers"
-// import inventory from "../inventory";
 
 
-function ItemTable() {
-  const [ inventory, setInventory ] = useState([])
+function ItemTable(props) {
 
-  useEffect(() => {
-    async function getItems() {
-      const response = await fetchGet(`/api/items`);
-      setInventory(response);
-    }
-    getItems();
-  });
+  function dispatchEdit(id) {
+    console.log(id);
+  }
 
-  const rows = inventory.map(item => (
+  function dispatchRestock(id) {
+    // console.log(id);
+    props.onRestock(id);
+  }
+
+  const rows = props.inventory.map(item => (
     <InventoryItem
-      key={item.id}
+      key={item._id}
       name={item.name}
       description={item.description}
-      price={item.price / 100}
-      inStock={item.inStock}
       category={item.category}
+      price={item.price}
+      inStock={item.inStock}
+      onEdit={() => dispatchEdit(item._id)}
+      onRestock={() => dispatchRestock(item._id)}
     />
   ))
 
@@ -38,7 +38,7 @@ function ItemTable() {
             <th>category</th>
             <th>price</th>
             <th>stock</th>
-            <th colspan="2">options</th>
+            <th colSpan="2">options</th>
           </tr>
         </thead>
         <tbody>

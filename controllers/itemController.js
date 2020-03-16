@@ -12,6 +12,7 @@ exports.addItem = async (req, res) => {
     const newItem = new Item({
       name: req.body.name,
       description: req.body.description,
+      category: req.body.category,
       price: req.body.price,
       inStock: req.body.inStock ? req.body.inStock : 25
     });
@@ -29,6 +30,7 @@ exports.editItem = async (req, res) => {
     const item = await Item.findById(req.params.id);
     item.name = req.body.name || item.name;
     item.description = req.body.description || item.description;
+    item.category = req.body.category || item.category;
     item.price = req.body.price || item.price;
     item.inStock = req.body.inStock || item.inStock;
     const newItemResponse = await item.save();
