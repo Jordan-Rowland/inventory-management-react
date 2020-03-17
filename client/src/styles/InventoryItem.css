@@ -3,3 +3,7 @@
   color: hsl(240, 65%, 49%);
   cursor: pointer;
 }
+
+.item-row a:visited {
+  color: hsl(240, 65%, 49%);
+}

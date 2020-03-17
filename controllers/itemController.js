@@ -7,6 +7,12 @@ exports.getItems = async (req, res) => {
   res.json(items);
 };
 
+exports.getItem = async (req, res) => {
+  const itemId = req.params.id;
+  const item = await Item.findById(itemId);
+  res.json(item);
+};
+
 exports.addItem = async (req, res) => {
   try {
     const newItem = new Item({

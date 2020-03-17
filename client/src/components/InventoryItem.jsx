@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/InventoryItem.css";
+import { Link } from "react-router-dom";
 
 
 function InventoryItem(props) {
@@ -12,9 +13,9 @@ function InventoryItem(props) {
     props.onRestock(id)
   }
 
-  // function dispatchDelete(id) {
-  //   props.onDelete(id)
-  // }
+  function dispatchDelete(id) {
+    props.onDelete(id)
+  }
 
   return (
     <tr className="item-row">
@@ -23,7 +24,10 @@ function InventoryItem(props) {
       <td>{props.category}</td>
       <td>{props.price}</td>
       <td>{props.inStock}</td>
-      <td><span onClick={dispatchEdit}>Edit</span></td>
+      {/* TODO:
+          Edit is passing the delete function
+      */}
+      <td><Link to={`/${props._id}`}>Edit</Link></td>
       <td><span onClick={dispatchRestock}>Restock</span></td>
     </tr>
   );

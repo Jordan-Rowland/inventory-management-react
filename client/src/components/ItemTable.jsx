@@ -10,20 +10,21 @@ function ItemTable(props) {
   }
 
   function dispatchRestock(id) {
-    // console.log(id);
     props.onRestock(id);
   }
+
+  function dispatchDelete(id) {
+    props.onDelete(id);
+  }
+
 
   const rows = props.inventory.map(item => (
     <InventoryItem
       key={item._id}
-      name={item.name}
-      description={item.description}
-      category={item.category}
-      price={item.price}
-      inStock={item.inStock}
+      {...item}
       onEdit={() => dispatchEdit(item._id)}
       onRestock={() => dispatchRestock(item._id)}
+      onDelete={() => dispatchDelete(item._id)}
     />
   ))
 
