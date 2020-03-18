@@ -8,7 +8,6 @@ import EditItem from "./components/EditItem.jsx"
 
 
 function App() {
-
   const [ inventory, setInventory ] = useState([])
 
   useEffect(() => {
@@ -53,12 +52,12 @@ function App() {
   return(
     <>
       <Switch>
-        <Route exact path="/">
+        <Route path="/">
           <ItemTable inventory={inventory} onRestock={handleRestock} onDelete={handleDelete} />
           <AddItem onClick={handleAddItemClick} />
-        </Route>
         <Route path="/:id">
           <EditItem />
+        </Route>
         </Route>
       </Switch>
     </>

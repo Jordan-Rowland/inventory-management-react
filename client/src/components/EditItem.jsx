@@ -1,10 +1,11 @@
 import React, { useEffect, useState }  from "react";
 import "../styles/EditItem.css";
 import { useParams } from "react-router-dom";
-import { fetchGet } from "../helpers"
+import { fetchGet } from "../helpers";
 
 
 function EditItem() {
+  // TODO: This might be problematic
   const [ item, setItem ] = useState({});
   const params = useParams();
 
@@ -18,14 +19,21 @@ function EditItem() {
   }, [params.id])
 
   return (
-    <div className="item">
-      <h1>{item.name}</h1>
-      <h5 className="price">{item.price}</h5>
-      {/* TODO:
-          Items need images
-      */}
-      {/* <img src={item.imageUrl} alt=""/> */}
-      <p>{item.description}</p>
+    <div className="edit-modal">
+      <div className="backdrop"></div>
+      <div className="item">
+        <input className="edit-input" type="text" value={item.name} />
+        <input className="edit-input" type="text" value={item.price} />
+        {/* TODO:
+            Items need images
+        */}
+        {/* <img src={item.imageUrl} alt=""/> */}
+        <textarea className="price edit-input" rows="10" type="text" value={item.description} />
+        <div className="button-wrapper">
+          <button>Update</button>
+          <button>Cancel</button>
+        </div>
+      </div>
     </div>
   );
 }
