@@ -8,18 +8,18 @@ function AddItem(props) {
   const [ description, handleDescription, setDescription ] = useInput();
   const [ category, handleCategory, setCategory ] = useInput();
   const [ price, handlePrice, setPrice ] = useInput();
-  const [ stock, handleStock, setStock ] = useInput();
+  const [ inStock, handleInStock, setInStock ] = useInput();
   const nameRef = useRef(null);
 
   function dispatchClick(e) {
     e.preventDefault();
-    const payload = { name, description, category, price, stock };
+    const payload = { name, description, category, price, inStock };
     props.onClick(payload);
     setName("");
     setDescription("");
     setCategory("");
     setPrice("");
-    setStock("");
+    setInStock("");
     nameRef.current.focus();
   }
 
@@ -29,7 +29,7 @@ function AddItem(props) {
       <input type="text" placeholder="Product Description" value={description} onChange={handleDescription} />
       <input type="text" placeholder="Product Category" value={category} onChange={handleCategory} />
       <input type="number" placeholder="Product Price" value={price} onChange={handlePrice} />
-      <input type="number" placeholder="Product Stock" value={stock} onChange={handleStock} />
+      <input type="number" placeholder="Product Stock" value={inStock} onChange={handleInStock} />
       <button>Add Item</button>
     </form>
   );

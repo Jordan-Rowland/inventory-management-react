@@ -23,7 +23,8 @@ exports.addItem = async (req, res) => {
       inStock: req.body.inStock ? req.body.inStock : 25
     });
     const newItemResponse = await newItem.save();
-    res.json(newItemResponse);
+    console.log(newItemResponse);
+    res.json({ success: true, ...newItemResponse._doc });
   } catch (err) {
     console.log(err);
     res.json({ success: false, error: err });
@@ -40,7 +41,7 @@ exports.editItem = async (req, res) => {
     item.price = req.body.price || item.price;
     item.inStock = req.body.inStock || item.inStock;
     const newItemResponse = await item.save();
-    res.json(newItemResponse);
+    res.json({ success: true, ...newItemResponse });
   } catch(err) {
     console.log(err);
     res.json({ success: false, error: err });

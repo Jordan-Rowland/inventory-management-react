@@ -22,7 +22,8 @@ function App() {
     console.table(payload);
     const response = await fetchPost("/api/items", payload);
     if (response.success) {
-      const newInventory = [...inventory, payload];
+      console.log(response)
+      const newInventory = [...inventory, {...payload, _id: response._id}];
       setInventory(newInventory);
     }
   };
@@ -49,6 +50,17 @@ function App() {
     }
   }
 
+  async function handleUpdate(id, data) {
+    const newInventory = [...inventory];
+    const updatedItemIndex = newInventory.findIndex(item => item._id === id);
+    newInventory[updatedItemIndex] = { ...data, _id: id }
+    const response = await fetchPost(`/api/items/${id}`, { ...data });
+    if (response.success) {
+      console.log('success');
+      setInventory(newInventory);
+    }
+  }
+
   return(
     <>
       <Switch>
@@ -56,7 +68,7 @@ function App() {
           <ItemTable inventory={inventory} onRestock={handleRestock} onDelete={handleDelete} />
           <AddItem onClick={handleAddItemClick} />
         <Route path="/:id">
-          <EditItem />
+          <EditItem onUpdate={handleUpdate} />
         </Route>
         </Route>
       </Switch>

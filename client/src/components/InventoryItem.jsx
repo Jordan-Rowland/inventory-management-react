@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 
 function InventoryItem(props) {
 
-  function dispatchEdit(id) {
-    props.onEdit(id)
-  }
-
   function dispatchRestock(id) {
     props.onRestock(id)
   }

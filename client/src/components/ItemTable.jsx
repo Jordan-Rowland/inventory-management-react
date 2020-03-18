@@ -26,7 +26,7 @@ function ItemTable(props) {
       onRestock={() => dispatchRestock(item._id)}
       onDelete={() => dispatchDelete(item._id)}
     />
-  ))
+  ));
 
   return (
     <div className="main">
