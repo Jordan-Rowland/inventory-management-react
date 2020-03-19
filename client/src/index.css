@@ -3,14 +3,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  color: #1c1c1c;
 }
 
 body {
   background: hsl(195, 32%, 90%);
-}
-
-.flex-wrapper {
-  display: flex;
 }
 
 input[type=text],
@@ -32,11 +29,6 @@ textarea {
   border-radius: 1.5px;
   padding: 0.6rem;
   font-size: 1rem;
-}
-
-.edit-input {
-  width: 90%;
-  margin: 10px 5rem;
 }
 
 button {

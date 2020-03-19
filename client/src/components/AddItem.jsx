@@ -26,7 +26,7 @@ function AddItem(props) {
   return (
     <form onSubmit={dispatchClick} className="add-item-form">
       <input type="text" placeholder="Product Name" value={name} onChange={handleName} ref={nameRef} />
-      <input type="text" placeholder="Product Description" value={description} onChange={handleDescription} />
+      <input type="text" placeholder="Product Description" className="description" value={description} onChange={handleDescription} />
       <input type="text" placeholder="Product Category" value={category} onChange={handleCategory} />
       <input type="number" placeholder="Product Price" value={price} onChange={handlePrice} />
       <input type="number" placeholder="Product Stock" value={inStock} onChange={handleInStock} />

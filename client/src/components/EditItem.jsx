@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect }  from "react";
 import "../styles/EditItem.css";
 import { useHistory, useParams } from "react-router-dom";
 import { fetchGet } from "../helpers";
@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 function EditItem(props) {
   // TODO: This might be problematic
-  // const [ item, setItem ] = useState({});
   const [ name, handleName, setName ] = useInput();
   const [ description, handleDescription, setDescription ] = useInput();
   const [ category, handleCategory, setCategory ] = useInput();
@@ -49,21 +48,38 @@ function EditItem(props) {
     <div className="edit-modal">
       <div className="backdrop"></div>
       <form onSubmit={dispatchUpdate} className="item">
-        <input className="edit-input" type="text" value={name} onChange={handleName} />
-        <input className="edit-input" type="number" value={price} onChange={handlePrice} />
-        <input className="edit-input" type="text" value={category} onChange={handleCategory} />
-        <input className="edit-input" type="number" value={inStock} onChange={handleInStock} />
+        <h1 className="headline">Edit Item</h1>
+        <label>
+          Name
+        </label>
+          <input className="edit-input" type="text" value={name} onChange={handleName} />
+        <label>
+          Price
+        </label>
+          <input className="edit-input" type="number" value={price} onChange={handlePrice} />
+        <label>
+          Category
+        </label>
+          <input className="edit-input" type="text" value={category} onChange={handleCategory} />
+        <label>
+          Stock
+        </label>
+          <input className="edit-input" type="number" value={inStock} onChange={handleInStock} />
         {/* TODO:
             Items need images
         */}
         {/* <img src={imageUrl} alt=""/> */}
-        <textarea
-          className="price edit-input"
-          rows="10"
-          type="text"
-          value={description}
-          onChange={handleDescription}
-        />
+
+        <label>
+          Description
+        </label>
+          <textarea
+            className="edit-input"
+            rows="10"
+            type="text"
+            value={description}
+            onChange={handleDescription}
+          />
         <div className="button-wrapper">
           <button>Update</button>
           <Link to="/">Cancel</Link>

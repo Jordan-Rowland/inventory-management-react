@@ -23,7 +23,6 @@ exports.addItem = async (req, res) => {
       inStock: req.body.inStock ? req.body.inStock : 25
     });
     const newItemResponse = await newItem.save();
-    console.log(newItemResponse);
     res.json({ success: true, ...newItemResponse._doc });
   } catch (err) {
     console.log(err);

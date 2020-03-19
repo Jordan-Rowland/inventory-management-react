@@ -14,15 +14,31 @@
 .item {
   position: absolute;
   max-width: 100%;
-  min-width: 70%;
-  top: 10vh;
+  min-width: 45%;
+  top: 5vh;
   background: hsl(206, 21%, 94%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem;
+  padding: 1rem 5rem;
   margin: 0 auto;
+  border-radius: 0.4rem;
+}
+
+.edit-input {
+  width: 100%;
+}
+
+.item label {
+  font-weight: 700;
+  color: rgb(96, 96, 96);
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.item .edit-input {
+  margin: 0.5rem;
 }
 
 .button-wrapper {

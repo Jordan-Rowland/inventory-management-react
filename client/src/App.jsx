@@ -25,6 +25,8 @@ function App() {
       console.log(response)
       const newInventory = [...inventory, {...payload, _id: response._id}];
       setInventory(newInventory);
+    } else {
+      console.log(response);
     }
   };
 
@@ -39,6 +41,8 @@ function App() {
     newInventory[updatedItemIndex].inStock = 25;
     if (response.success) {
       setInventory(newInventory);
+    } else {
+      console.log(response);
     }
   }
 
@@ -47,6 +51,8 @@ function App() {
     const response = await fetchDelete(`/api/items/${id}`, { inStock: 25 });
     if (response.success) {
       setInventory(newInventory);
+    } else {
+      console.log(response);
     }
   }
 
@@ -56,8 +62,9 @@ function App() {
     newInventory[updatedItemIndex] = { ...data, _id: id }
     const response = await fetchPost(`/api/items/${id}`, { ...data });
     if (response.success) {
-      console.log('success');
       setInventory(newInventory);
+    } else {
+      console.log(response);
     }
   }
 
