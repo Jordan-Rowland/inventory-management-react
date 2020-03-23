@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
-.item-row a:visited {
+a {
   color: hsl(240, 65%, 49%);
+}
+
+.item-cell {
+  width: 4rem;
 }

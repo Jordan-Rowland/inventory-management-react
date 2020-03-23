@@ -10,6 +10,10 @@ body {
   background: hsl(195, 32%, 90%);
 }
 
+.flex-wrapper {
+  display: flex;
+}
+
 input[type=text],
 input[type=email],
 input[type=number],
@@ -32,9 +36,22 @@ textarea {
 }
 
 button {
-  padding: 0.2rem;
+  padding: 0.4rem 0.8rem;
   flex: 1 0 2rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+  border: none;
+  background-color: hsl(201, 76%, 51%);
+  border: 0.08rem solid hsl(201, 76%, 51%);
+  font-weight: 800;
+  color: hsl(0, 0%, 92%);
+  letter-spacing: 0.04rem;
+}
+
+.btn-secondary {
+  color: hsl(201, 76%, 51%);
+  border: 0.08rem solid hsl(201, 76%, 51%);
+  background-color: hsla(0,0%,0%,0);
 }
 
 form button {

@@ -24,7 +24,12 @@ const ItemSchema = new Schema({
   inStock: {
     type: Number,
     required: true,
-  }
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 module.exports = User = mongoose.model("item", ItemSchema);

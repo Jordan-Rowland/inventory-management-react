@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/ItemTable.css";
+import "./styles/ItemTable.css";
 import InventoryItem from "./InventoryItem.jsx";
 
 
@@ -16,7 +16,6 @@ function ItemTable(props) {
   function dispatchDelete(id) {
     props.onDelete(id);
   }
-
 
   const rows = props.inventory.map(item => (
     <InventoryItem

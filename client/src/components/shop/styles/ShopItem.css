@@ -1,0 +1,30 @@
+.feature-card {
+  flex: 0 0 30%;
+  padding: 2px;
+}
+
+.feature-card img {
+  position: relative;
+  top: -20px;
+  width: 100%;
+}
+
+.feature-card-img {
+  margin: auto;
+  margin-top: 1rem;
+  height: 225px;
+  width: 95%;
+  overflow: hidden;
+  border-radius: 9px;
+  margin-bottom: 0.3rem;
+}
+
+.feature-details {
+  line-height: 1.5rem;
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.product-name {
+  color: rgb(113, 113, 113);
+}

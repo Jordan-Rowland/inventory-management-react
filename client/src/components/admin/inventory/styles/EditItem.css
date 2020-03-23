@@ -42,9 +42,11 @@
 }
 
 .button-wrapper {
-  margin: 1rem;
+  width: 100%;
+  justify-content: space-between;
 }
 
-button {
-  margin: 0.5rem;
+.delete-btn {
+  flex: 0 0 1rem;
+  margin: 10px 0;
 }

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-// import useStorage from "./hooks/useStorage"
+// import useStorage from "./hooks/useStorage";
 import { Route, Switch } from "react-router-dom";
-import ItemTable from "./components/ItemTable.jsx"
-import AddItem from "./components/AddItem.jsx"
-import { fetchGet, fetchPost, fetchDelete } from "./helpers"
-import EditItem from "./components/EditItem.jsx"
+import ItemTable from "./components/admin/inventory/ItemTable.jsx";
+import AddItem from "./components/admin/inventory/AddItem.jsx";
+import { fetchGet, fetchPost, fetchDelete } from "./helpers";
+import EditItem from "./components/admin/inventory/EditItem.jsx";
+import ShopItemsContainer from "./components/shop/ShopItemsContainer.jsx";
 
 
 function App() {
-  const [ inventory, setInventory ] = useState([])
+  const [inventory, setInventory] = useState([]);
+
 
   useEffect(() => {
     async function getItems() {
@@ -23,7 +25,7 @@ function App() {
     const response = await fetchPost("/api/items", payload);
     if (response.success) {
       console.log(response)
-      const newInventory = [...inventory, {...payload, _id: response._id}];
+      const newInventory = [...inventory, { ...payload, _id: response._id }];
       setInventory(newInventory);
     } else {
       console.log(response);
@@ -48,7 +50,7 @@ function App() {
 
   async function handleDelete(id) {
     const newInventory = inventory.filter(item => item._id !== id);
-    const response = await fetchDelete(`/api/items/${id}`, { inStock: 25 });
+    const response = await fetchDelete(`/api/items/${id}`);
     if (response.success) {
       setInventory(newInventory);
     } else {
@@ -68,15 +70,23 @@ function App() {
     }
   }
 
-  return(
+  return (
     <>
       <Switch>
-        <Route path="/">
+        <Route path="/inventory/">
           <ItemTable inventory={inventory} onRestock={handleRestock} onDelete={handleDelete} />
           <AddItem onClick={handleAddItemClick} />
-        <Route path="/:id">
-          <EditItem onUpdate={handleUpdate} />
+          <Route path="/inventory/:id">
+            <EditItem onUpdate={handleUpdate} onDelete={handleDelete} />
+          </Route>
         </Route>
+        <Route path="/shop">
+          <ShopItemsContainer inventory={inventory} />
+          {/* <ShopItem name="test Product" price="12.99" img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" /> */}
+          {/* <EditItem onUpdate={handleUpdate} onDelete={handleDelete} /> */}
+        </Route>
+        <Route path="/cart">
+          {/* <ShopItem /> */}
         </Route>
       </Switch>
     </>

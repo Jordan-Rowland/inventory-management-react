@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import "../styles/AddItem.css";
-import useInput from "../hooks/useInput";
+import "./styles/AddItem.css";
+import useInput from "../../../hooks/useInput";
 
 
 function AddItem(props) {
-  const [ name, handleName, setName ] = useInput();
-  const [ description, handleDescription, setDescription ] = useInput();
-  const [ category, handleCategory, setCategory ] = useInput();
-  const [ price, handlePrice, setPrice ] = useInput();
-  const [ inStock, handleInStock, setInStock ] = useInput();
+  const [name, handleName, setName] = useInput();
+  const [description, handleDescription, setDescription] = useInput();
+  const [category, handleCategory, setCategory] = useInput();
+  const [price, handlePrice, setPrice] = useInput();
+  const [inStock, handleInStock, setInStock] = useInput();
   const nameRef = useRef(null);
 
   function dispatchClick(e) {
