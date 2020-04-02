@@ -15,7 +15,7 @@
   position: absolute;
   max-width: 100%;
   min-width: 45%;
-  top: 5vh;
+  top: 1vh;
   background: hsl(206, 21%, 94%);
   display: flex;
   flex-direction: column;
@@ -23,6 +23,7 @@
   align-items: center;
   padding: 1rem 5rem;
   margin: 0 auto;
+  margin-bottom: 3rem;
   border-radius: 0.4rem;
 }
 

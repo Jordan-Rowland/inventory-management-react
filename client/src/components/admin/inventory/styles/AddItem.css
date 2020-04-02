@@ -3,7 +3,26 @@
   margin: auto;
   width: 65%;
   max-width: 100%;
-  /* border: 1px solid black; */
   align-items: center;
   flex-wrap: wrap;
+}
+
+.description {
+  flex: 0 1 100%;
+}
+
+.add-btn {
+  flex: 1 0 2rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .add-item-form {
+    width: 100%
+  }
+}
+
+@media only screen and (max-width: 621px) {
+  .add-btn {
+    flex: 1 0 10rem;
+  }
 }

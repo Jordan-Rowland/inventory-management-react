@@ -1,0 +1,24 @@
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  background-color: hsl(161, 29%, 44%);
+  width: 100%;
+  padding: 20px 0;
+  z-index: 2;
+}
+
+.header-links {
+  color: aliceblue;
+  font-weight: 800;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+.logo {
+  color: aliceblue;
+  font-weight: 800;
+  margin-left: 2rem;
+}

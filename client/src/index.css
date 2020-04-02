@@ -9,14 +9,15 @@
 body {
   background: hsl(195, 32%, 90%);
 }
-
+/*
 .flex-wrapper {
   display: flex;
-}
+} */
 
 input[type=text],
 input[type=email],
 input[type=number],
+input[type=url],
 input[type=password] {
   flex: 1 1 2rem;
   height: 2rem;
@@ -37,7 +38,7 @@ textarea {
 
 button {
   padding: 0.4rem 0.8rem;
-  flex: 1 0 2rem;
+  /* flex: 1 0 2rem; */
   font-size: 0.9rem;
   border-radius: 0.2rem;
   border: none;

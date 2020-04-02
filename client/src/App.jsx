@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-// import useStorage from "./hooks/useStorage";
 import { Route, Switch } from "react-router-dom";
+import { fetchGet, fetchPost, fetchDelete } from "./helpers";
+import useStorage from "./hooks/useStorage";
+import Header from "./components/Header.jsx"
 import ItemTable from "./components/admin/inventory/ItemTable.jsx";
 import AddItem from "./components/admin/inventory/AddItem.jsx";
-import { fetchGet, fetchPost, fetchDelete } from "./helpers";
 import EditItem from "./components/admin/inventory/EditItem.jsx";
 import ShopItemsContainer from "./components/shop/ShopItemsContainer.jsx";
+import Cart from "./components/cart/Cart.jsx"
 
 
 function App() {
   const [inventory, setInventory] = useState([]);
-
+  const [cart, setCart] = useState([]);
+  const [cartStorage, setCartStorage] = useStorage("cart");
 
   useEffect(() => {
     async function getItems() {
@@ -18,6 +21,9 @@ function App() {
       setInventory(response);
     }
     getItems();
+    if (cartStorage) {
+      setCart(cartStorage);
+    }
   }, []);
 
   async function handleAddItemClick(payload) {
@@ -72,6 +78,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Switch>
         <Route path="/inventory/">
           <ItemTable inventory={inventory} onRestock={handleRestock} onDelete={handleDelete} />
@@ -80,13 +87,11 @@ function App() {
             <EditItem onUpdate={handleUpdate} onDelete={handleDelete} />
           </Route>
         </Route>
-        <Route path="/shop">
+        <Route path="/shop/">
           <ShopItemsContainer inventory={inventory} />
-          {/* <ShopItem name="test Product" price="12.99" img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" /> */}
-          {/* <EditItem onUpdate={handleUpdate} onDelete={handleDelete} /> */}
         </Route>
-        <Route path="/cart">
-          {/* <ShopItem /> */}
+        <Route exact path="/cart">
+          <Cart items={inventory} />
         </Route>
       </Switch>
     </>

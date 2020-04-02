@@ -15,6 +15,7 @@ function EditItem(props) {
   const [category, handleCategory, setCategory] = useInput();
   const [price, handlePrice, setPrice] = useInput();
   const [inStock, handleInStock, setInStock] = useInput();
+  const [imageUrl, handleImageUrl, setImageUrl] = useInput();
   const params = useParams();
   const history = useHistory();
 
@@ -27,6 +28,7 @@ function EditItem(props) {
       setCategory(response.category);
       setPrice(response.price);
       setInStock(response.inStock);
+      setImageUrl(response.imageUrl);
     }
 
     getItem();
@@ -78,11 +80,10 @@ function EditItem(props) {
           Stock
         </label>
         <input className="edit-input" type="number" value={inStock} onChange={handleInStock} />
-        {/* TODO:
-            Items need images
-        */}
-        {/* <img src={imageUrl} alt=""/> */}
-
+        <label>
+          Image URL
+        </label>
+        <input className="edit-input" type="url" value={imageUrl} onChange={handleImageUrl} />
         <label>
           Description
         </label>
